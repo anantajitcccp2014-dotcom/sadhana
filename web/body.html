@@ -1,0 +1,109 @@
+<div class="wrap">
+  <header>
+    <h1>Садхана</h1>
+    <div class="daynav">
+      <button id="prev" aria-label="Предыдущий день">‹</button>
+      <div class="dayname" id="dayname"></div>
+      <button id="next" aria-label="Следующий день">›</button>
+    </div>
+  </header>
+
+  <section class="card">
+    <div class="label">Подъём и отбой</div>
+    <div class="row">
+      <button class="mark wake" id="btnWake"><span class="what">Встал</span><span class="t" id="tWake">—</span><span class="hint" id="hWake"></span></button>
+      <button class="mark sleep" id="btnSleep"><span class="what">Лёг</span><span class="t" id="tSleep">—</span><span class="hint" id="hSleep"></span></button>
+    </div>
+    <div class="timeedit">
+      <label>подъём<input type="time" id="inWake"></label>
+      <label>отбой<input type="time" id="inSleep"></label>
+    </div>
+    <div class="sleepline"><span>Сон прошлой ночью</span><b id="sleepDur">—</b></div>
+  </section>
+
+  <section class="card">
+    <div class="label">Джапа · круги по 108</div>
+    <div class="japa">
+      <div class="ring">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="var(--tulsi-soft)" stroke-width="9"/><circle id="ringArc" cx="50" cy="50" r="44" fill="none" stroke="var(--tulsi)" stroke-width="9" stroke-linecap="round" stroke-dasharray="276.46" stroke-dashoffset="276.46"/></svg>
+        <div class="c"><b id="japaN">0</b><span id="japaOf">из 16</span></div>
+      </div>
+      <div class="jbtns">
+        <div class="row"><button id="j1">+1</button><button id="j4">+4</button></div>
+        <div class="row"><button id="j8">+8</button><button id="jm">−1</button></div>
+      </div>
+    </div>
+    <div class="goal"><label for="goalIn">Цель на день:</label><input id="goalIn" type="number" min="1" max="192" inputmode="numeric">кругов</div>
+  </section>
+
+  <section class="card">
+    <div class="label">Чтение книг</div>
+    <div class="read">
+      <div class="tot"><b id="readTot">0</b> <span>мин сегодня</span><div class="running" id="running" hidden></div></div>
+      <button class="play" id="play">Начать чтение</button>
+    </div>
+    <div class="quick">добавить вручную:
+      <button data-act="read" data-add="5">+5</button><button data-act="read" data-add="15">+15</button><button data-act="read" data-add="30">+30</button><button data-act="read" data-add="-5">−5</button>
+    </div>
+    <div class="sessions" id="sessions"></div>
+  </section>
+
+  <section class="card">
+    <div class="label">Повторение шлок</div>
+    <div class="read">
+      <div class="tot"><b id="slokaTot">0</b> <span>мин сегодня</span><div class="running" id="slokaRunning" hidden></div></div>
+      <button class="play alt" id="slokaPlay">Начать повторение</button>
+    </div>
+    <div class="quick">добавить вручную:
+      <button data-act="sloka" data-add="5">+5</button><button data-act="sloka" data-add="15">+15</button><button data-act="sloka" data-add="30">+30</button><button data-act="sloka" data-add="-5">−5</button>
+    </div>
+    <div class="sessions" id="slokaSessions"></div>
+  </section>
+
+  <section class="card">
+    <div class="label">Последние 7 дней · в среднем</div>
+    <div class="avg">
+      <div class="row">
+        <div><b id="aWake">—</b><span>подъём</span></div>
+        <div><b id="aSleep">—</b><span>отбой</span></div>
+        <div><b id="aDur">—</b><span>сон</span></div>
+      </div>
+      <div class="row">
+        <div><b id="aJapa">—</b><span>кругов джапы</span></div>
+        <div><b id="aRead">—</b><span>мин чтения</span></div>
+        <div><b id="aSloka">—</b><span>мин на шлоки</span></div>
+      </div>
+    </div>
+    <div class="chart" id="chart"></div>
+    <div class="tbl"><table>
+      <thead><tr><th>День</th><th>Встал</th><th>Лёг</th><th>Сон</th><th>Джапа</th><th>Чтен.</th><th>Шлоки</th></tr></thead>
+      <tbody id="hist"></tbody>
+    </table></div>
+  </section>
+
+  <section class="card">
+    <div class="label">Резервная копия</div>
+    <div class="row backup">
+      <button id="exp">Сохранить копию</button>
+      <button id="imp">Восстановить</button>
+    </div>
+    <div class="hint2">Записи хранятся в самом телефоне и не пропадают при обновлении приложения. Копия в файл нужна на случай, если приложение удалят или сменится телефон.</div>
+  </section>
+
+  <div class="status" id="status"></div>
+</div>
+
+<div class="focus" id="focus" hidden>
+  <div>
+    <div class="fname" id="fName"></div>
+    <div class="fsince" id="fSince"></div>
+  </div>
+  <div>
+    <div class="fclock" id="fClock">0</div>
+    <div class="fday" id="fDay"></div>
+  </div>
+  <div class="fbtns">
+    <button class="fstop" id="fStop">Закончить</button>
+    <button class="fhide" id="fHide">Свернуть, таймер идёт дальше</button>
+  </div>
+</div>
