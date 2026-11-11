@@ -24,7 +24,8 @@
   --bg:#eef1f5; --surface:#ffffff; --ink:#1d2433; --muted:#64708a; --line:#d7dce6;
   --dawn:#d9780f; --dawn-soft:#fbead6; --tulsi:#2c7650; --tulsi-soft:#dcefe3;
   --night:#3b4a8c; --night-soft:#e1e5f6; --danger:#b4412f;
-  --fc:#f0a04a; --focus-bg:#0e1220; --focus-ink:#f1ede4; --focus-muted:#8d93a8; --focus-read:#f0a04a; --focus-sloka:#a5b1f0;
+  --rose:#a83f66; --rose-soft:#f6dfe7; --teal:#17707c; --teal-soft:#d4ecef;
+  --pf:#f0a04a; --focus-bg:#0e1220; --focus-ink:#f1ede4; --focus-muted:#8d93a8; --focus-read:#f0a04a; --focus-sloka:#a5b1f0;
   --f-display:"Yeseva One", Georgia, serif;
   --f-body:"Manrope", Roboto, "Droid Sans", sans-serif;
   --f-num:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;
@@ -32,7 +33,8 @@
 :root[data-theme="dark"]{
   --bg:#11141d; --surface:#1a1f2d; --ink:#e7eaf2; --muted:#97a0b6; --line:#2a3145;
   --dawn:#f0a04a; --dawn-soft:#3a2a17; --tulsi:#5db487; --tulsi-soft:#1b3328;
-  --night:#9aa7ea; --night-soft:#232a48; --danger:#e57a66; color-scheme:dark}
+  --night:#9aa7ea; --night-soft:#232a48; --danger:#e57a66;
+  --rose:#ec8fb0; --rose-soft:#3a1f2a; --teal:#62c4cf; --teal-soft:#15323a; color-scheme:dark}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -49,6 +51,7 @@ h1{font-family:"Yeseva One", Georgia, serif;font-family:var(--f-display);font-we
 .daynav{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center}
 .daynav button{width:40px;height:40px;border-radius:50%;font-size:1.3rem;color:#64708a;color:var(--muted)}
 .daynav button:disabled{opacity:.3}
+.daynav .gear{font-size:1.25rem;margin-left:2px}
 .dayname{font-weight:600;min-width:7.5em;text-align:center;font-size:.95rem}
 .dayname small{display:block;color:#64708a;color:var(--muted);font-weight:400;font-size:.78rem}
 
@@ -60,6 +63,17 @@ h1{font-family:"Yeseva One", Georgia, serif;font-family:var(--f-display);font-we
 .row{display:-webkit-box;display:-webkit-flex;display:flex}
 .row > *{-webkit-box-flex:1;-webkit-flex:1 1 0;flex:1 1 0;min-width:0}
 .row > * + *{margin-left:10px}
+
+/* цвета практик */
+.c-dawn{--pc:var(--dawn);--pc-soft:var(--dawn-soft);--pf:#f0a04a}
+.c-night{--pc:var(--night);--pc-soft:var(--night-soft);--pf:#a5b1f0}
+.c-tulsi{--pc:var(--tulsi);--pc-soft:var(--tulsi-soft);--pf:#7fd0a3}
+.c-rose{--pc:var(--rose);--pc-soft:var(--rose-soft);--pf:#f2a1bd}
+.c-teal{--pc:var(--teal);--pc-soft:var(--teal-soft);--pf:#7fd6e0}
+
+.welcome{position:relative;font-size:.9rem;padding-right:40px;border-color:#d9780f;border-color:var(--dawn);background:#fbead6;background:var(--dawn-soft)}
+.welcome .inl{font-weight:700;color:#d9780f;color:var(--dawn);text-decoration:underline;padding:0}
+.welcome .close{position:absolute;top:6px;right:8px;font-size:1.4rem;color:#64708a;color:var(--muted);width:32px;height:32px}
 
 /* подъём / отбой */
 .mark{border-radius:12px;padding:14px 12px;text-align:left;border:1.5px solid transparent;display:block}
@@ -81,12 +95,15 @@ h1{font-family:"Yeseva One", Georgia, serif;font-family:var(--f-display);font-we
 .ring{width:108px;height:108px;position:relative;-webkit-flex:none;flex:none;margin-right:16px}
 .ring svg{width:100%;height:100%;-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}
 .ring .c{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical;-webkit-flex-direction:column;flex-direction:column;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center}
-.ring .c b{font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num);font-size:2rem;line-height:1;color:#2c7650;color:var(--tulsi)}
+.ring .c b{font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num);font-size:2rem;line-height:1;color:var(--pc)}
+.bignum{width:108px;-webkit-flex:none;flex:none;margin-right:16px;text-align:center}
+.bignum b{display:block;font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num);font-size:2.4rem;line-height:1;color:var(--pc)}
+.bignum span{font-size:.75rem;color:#64708a;color:var(--muted)}
 .ring .c span{font-size:.75rem;color:#64708a;color:var(--muted)}
 .jbtns{-webkit-box-flex:1;-webkit-flex:1;flex:1;min-width:0}
 .jbtns .row + .row{margin-top:8px}
 .jbtns .row > * + *{margin-left:8px}
-.jbtns button{border-radius:10px;padding:14px 4px;font-weight:700;font-size:1.05rem;background:#dcefe3;background:var(--tulsi-soft);color:#2c7650;color:var(--tulsi);font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num)}
+.jbtns button{border-radius:10px;padding:14px 4px;font-weight:700;font-size:1.05rem;background:var(--pc-soft);color:var(--pc);font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num)}
 .goal{font-size:.8rem;color:#64708a;color:var(--muted)}
 .goal input{width:3.6em;font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num);padding:2px 4px;border:1px solid #d7dce6;border:1px solid var(--line);border-radius:6px;background:#eef1f5;background:var(--bg);color:#1d2433;color:var(--ink);margin:0 4px}
 
@@ -94,12 +111,21 @@ h1{font-family:"Yeseva One", Georgia, serif;font-family:var(--f-display);font-we
 .read{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-flex-wrap:wrap;flex-wrap:wrap}
 .read .tot b{font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num);font-size:1.7rem}
 .read .tot span{color:#64708a;color:var(--muted);font-size:.85rem}
-.play{border-radius:999px;padding:12px 20px;font-weight:700;background:#d9780f;background:var(--dawn);color:#fff;margin-top:4px}
-.play.alt{background:#3b4a8c;background:var(--night)}
+.play{border-radius:999px;padding:12px 20px;font-weight:700;background:var(--pc);color:#ffffff;color:var(--surface);margin-top:4px}
 .play.on{background:#b4412f;background:var(--danger)}
 .running{font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num);color:#b4412f;color:var(--danger);font-size:.95rem;text-decoration:underline;padding:4px 0}
 .quick{font-size:.8rem;color:#64708a;color:var(--muted)}
 .quick button{border:1px solid #d7dce6;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num);font-size:.85rem;margin:3px 2px}
+.bar{height:6px;border-radius:3px;background:var(--pc-soft);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--pc);border-radius:3px}
+/* отметка «сделано» */
+.checkrow{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between}
+.checkrow .cname{font-weight:700;font-size:1rem;min-width:0;margin-right:10px}
+.checkbtn{border-radius:999px;padding:11px 18px;font-weight:700;border:1.5px solid var(--pc);color:var(--pc);white-space:nowrap;-webkit-flex:none;flex:none}
+.checkbtn.done{background:var(--pc);color:#ffffff;color:var(--surface)}
+.card.check{padding:12px 16px}
+#practices > .card{margin-bottom:14px}
+#practices > .card:last-child{margin-bottom:0}
 .sessions{font-size:.8rem;color:#64708a;color:var(--muted);font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num)}
 
 /* история */
@@ -109,11 +135,47 @@ h1{font-family:"Yeseva One", Georgia, serif;font-family:var(--f-display);font-we
 .chart svg{width:100%;height:auto;display:block}
 .tbl{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:.82rem}
-th{font-weight:600;color:#64708a;color:var(--muted);text-align:right;padding:6px 4px;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid #d7dce6;border-bottom:1px solid var(--line)}
+th{white-space:nowrap;font-weight:600;color:#64708a;color:var(--muted);text-align:right;padding:6px 4px;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid #d7dce6;border-bottom:1px solid var(--line)}
 th:first-child,td:first-child{text-align:left}
 td{padding:8px 4px;text-align:right;font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num);border-bottom:1px solid #d7dce6;border-bottom:1px solid var(--line);white-space:nowrap}
 tr.cur td{background:#fbead6;background:var(--dawn-soft)}
 td.dim{color:#64708a;color:var(--muted)}
+
+/* настройки */
+.back{font-weight:700;color:#d9780f;color:var(--dawn);font-size:1rem;padding:8px 8px 8px 0}
+#settings header{-webkit-box-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start}
+#settings h1{margin-left:12px}
+.switch{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;font-size:.92rem}
+.switch input{width:22px;height:22px;margin:0 12px 0 0;-webkit-flex:none;flex:none;accent-color:#d9780f;accent-color:var(--dawn)}
+.pitem{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;padding:10px 0;border-bottom:1px solid #d7dce6;border-bottom:1px solid var(--line)}
+.pitem:last-child{border-bottom:0}
+.pitem .dot{width:12px;height:12px;border-radius:50%;background:var(--pc);-webkit-flex:none;flex:none;margin-right:12px}
+.pitem .pinfo{-webkit-box-flex:1;-webkit-flex:1;flex:1;min-width:0}
+.pitem .pinfo b{display:block;font-size:.98rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pitem .pinfo span{font-size:.78rem;color:#64708a;color:var(--muted)}
+.pitem.off .pinfo b{color:#64708a;color:var(--muted)}
+.pitem button{width:38px;height:38px;border-radius:8px;color:#64708a;color:var(--muted);font-size:1.05rem;-webkit-flex:none;flex:none}
+.pitem button:disabled{opacity:.25}
+.pitem .edit{color:#1d2433;color:var(--ink)}
+.add{width:100%;border:1.5px dashed #d7dce6;border:1.5px dashed var(--line);border-radius:10px;padding:12px;font-weight:700;color:#d9780f;color:var(--dawn)}
+.editor{border-color:#d9780f;border-color:var(--dawn)}
+.field{display:block}
+.field > span{display:block;font-size:.8rem;color:#64708a;color:var(--muted);margin-bottom:4px}
+.field input[type=text],.field input[type=number]{width:100%;font:inherit;font-size:1rem;padding:9px 10px;border:1px solid #d7dce6;border:1px solid var(--line);border-radius:8px;background:#eef1f5;background:var(--bg);color:#1d2433;color:var(--ink)}
+.seg{display:-webkit-box;display:-webkit-flex;display:flex;border:1px solid #d7dce6;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{-webkit-box-flex:1;-webkit-flex:1;flex:1;padding:10px 4px;font-weight:600;font-size:.88rem;color:#64708a;color:var(--muted)}
+.seg button + button{border-left:1px solid #d7dce6;border-left:1px solid var(--line)}
+.seg button.on{background:#fbead6;background:var(--dawn-soft);color:#d9780f;color:var(--dawn)}
+.seg.locked button{opacity:.45}
+.seg.locked button.on{opacity:1}
+.swatches button{width:36px;height:36px;border-radius:50%;background:var(--pc);margin:0 10px 0 0;border:3px solid transparent}
+.swatches button.on{border-color:#1d2433;border-color:var(--ink)}
+.edbtns{display:-webkit-box;display:-webkit-flex;display:flex}
+.edbtns button{-webkit-box-flex:1;-webkit-flex:1;flex:1;border-radius:10px;padding:12px;font-weight:700;border:1px solid #d7dce6;border:1px solid var(--line)}
+.edbtns button + button{margin-left:10px}
+.edbtns .primary{background:#d9780f;background:var(--dawn);color:#ffffff;color:var(--surface);border-color:#d9780f;border-color:var(--dawn)}
+.danger{width:100%;padding:10px;color:#b4412f;color:var(--danger);font-weight:600;font-size:.9rem}
+.danger.armed{background:#b4412f;background:var(--danger);color:#ffffff;color:var(--surface);border-radius:10px}
 
 /* резервная копия */
 .backup button{border:1px solid #d7dce6;border:1px solid var(--line);border-radius:10px;padding:11px 8px;text-align:center;font-size:.85rem;font-weight:600}
@@ -125,30 +187,36 @@ td.dim{color:#64708a;color:var(--muted)}
 .focus{position:fixed;top:0;left:0;right:0;bottom:0;z-index:50;background:#0e1220;background:var(--focus-bg);color:#f1ede4;color:var(--focus-ink);text-align:center;
   display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical;-webkit-flex-direction:column;flex-direction:column;
   -webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;padding:32px 20px 24px}
-.focus .fname{font-family:"Yeseva One", Georgia, serif;font-family:var(--f-display);font-size:1.6rem;color:#f0a04a;color:var(--fc)}
+.focus .fname{font-family:"Yeseva One", Georgia, serif;font-family:var(--f-display);font-size:1.6rem;color:#f0a04a;color:var(--pf)}
 .focus .fsince{color:#8d93a8;color:var(--focus-muted);font-size:.9rem;font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num);margin-top:6px}
-.focus .fclock{font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num);font-weight:700;line-height:1;font-size:22vw;color:#f0a04a;color:var(--fc);letter-spacing:-.03em}
+.focus .fclock{font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num);font-weight:700;line-height:1;font-size:22vw;color:#f0a04a;color:var(--pf);letter-spacing:-.03em}
 .focus .fclock small{font-size:.38em;opacity:.55;letter-spacing:0}
 .focus .fday{color:#8d93a8;color:var(--focus-muted);font-size:.95rem;margin-top:14px}
 .focus .fday b{color:#f1ede4;color:var(--focus-ink);font-family:"JetBrains Mono", "Roboto Mono", "Droid Sans Mono", monospace;font-family:var(--f-num)}
 .focus .fbtns{width:100%;max-width:360px}
-.focus .fstop{display:block;width:100%;border-radius:999px;padding:18px;font-size:1.15rem;font-weight:700;background:#f0a04a;background:var(--fc);color:#0e1220;color:var(--focus-bg)}
+.focus .fstop{display:block;width:100%;border-radius:999px;padding:18px;font-size:1.15rem;font-weight:700;background:#f0a04a;background:var(--pf);color:#0e1220;color:var(--focus-bg)}
 .focus .fhide{display:block;width:100%;padding:14px;color:#8d93a8;color:var(--focus-muted);font-size:.95rem;margin-top:6px}
 @media (orientation:landscape){.focus .fclock{font-size:28vh}}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="wrap" id="main">
   <header>
     <h1>Садхана</h1>
     <div class="daynav">
       <button id="prev" aria-label="Предыдущий день">‹</button>
       <div class="dayname" id="dayname"></div>
       <button id="next" aria-label="Следующий день">›</button>
+      <button id="openSettings" class="gear" aria-label="Настройки">⚙</button>
     </div>
   </header>
 
-  <section class="card">
+  <div class="welcome card" id="welcome" hidden>
+    <b>Добро пожаловать!</b> Это ваш дневник садханы. Набор практик можно изменить: добавить свои, убрать лишние, поменять цели. Нажмите <button class="inl" id="welcomeGo">⚙ Настройки</button>
+    <button class="close" id="welcomeClose" aria-label="Закрыть">×</button>
+  </div>
+
+  <section class="card" id="sleepCard">
     <div class="label">Подъём и отбой</div>
     <div class="row">
       <button class="mark wake" id="btnWake"><span class="what">Встал</span><span class="t" id="tWake">—</span><span class="hint" id="hWake"></span></button>
@@ -161,64 +229,58 @@ td.dim{color:#64708a;color:var(--muted)}
     <div class="sleepline"><span>Сон прошлой ночью</span><b id="sleepDur">—</b></div>
   </section>
 
-  <section class="card">
-    <div class="label">Джапа · круги по 108</div>
-    <div class="japa">
-      <div class="ring">
-        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="var(--tulsi-soft)" stroke-width="9"/><circle id="ringArc" cx="50" cy="50" r="44" fill="none" stroke="var(--tulsi)" stroke-width="9" stroke-linecap="round" stroke-dasharray="276.46" stroke-dashoffset="276.46"/></svg>
-        <div class="c"><b id="japaN">0</b><span id="japaOf">из 16</span></div>
-      </div>
-      <div class="jbtns">
-        <div class="row"><button id="j1">+1</button><button id="j4">+4</button></div>
-        <div class="row"><button id="j8">+8</button><button id="jm">−1</button></div>
-      </div>
-    </div>
-    <div class="goal"><label for="goalIn">Цель на день:</label><input id="goalIn" type="number" min="1" max="192" inputmode="numeric">кругов</div>
-  </section>
-
-  <section class="card">
-    <div class="label">Чтение книг</div>
-    <div class="read">
-      <div class="tot"><b id="readTot">0</b> <span>мин сегодня</span><div class="running" id="running" hidden></div></div>
-      <button class="play" id="play">Начать чтение</button>
-    </div>
-    <div class="quick">добавить вручную:
-      <button data-act="read" data-add="5">+5</button><button data-act="read" data-add="15">+15</button><button data-act="read" data-add="30">+30</button><button data-act="read" data-add="-5">−5</button>
-    </div>
-    <div class="sessions" id="sessions"></div>
-  </section>
-
-  <section class="card">
-    <div class="label">Повторение шлок</div>
-    <div class="read">
-      <div class="tot"><b id="slokaTot">0</b> <span>мин сегодня</span><div class="running" id="slokaRunning" hidden></div></div>
-      <button class="play alt" id="slokaPlay">Начать повторение</button>
-    </div>
-    <div class="quick">добавить вручную:
-      <button data-act="sloka" data-add="5">+5</button><button data-act="sloka" data-add="15">+15</button><button data-act="sloka" data-add="30">+30</button><button data-act="sloka" data-add="-5">−5</button>
-    </div>
-    <div class="sessions" id="slokaSessions"></div>
-  </section>
+  <div id="practices"></div>
 
   <section class="card">
     <div class="label">Последние 7 дней · в среднем</div>
-    <div class="avg">
-      <div class="row">
-        <div><b id="aWake">—</b><span>подъём</span></div>
-        <div><b id="aSleep">—</b><span>отбой</span></div>
-        <div><b id="aDur">—</b><span>сон</span></div>
-      </div>
-      <div class="row">
-        <div><b id="aJapa">—</b><span>кругов джапы</span></div>
-        <div><b id="aRead">—</b><span>мин чтения</span></div>
-        <div><b id="aSloka">—</b><span>мин на шлоки</span></div>
-      </div>
-    </div>
+    <div class="avg" id="avg"></div>
     <div class="chart" id="chart"></div>
     <div class="tbl"><table>
-      <thead><tr><th>День</th><th>Встал</th><th>Лёг</th><th>Сон</th><th>Джапа</th><th>Чтен.</th><th>Шлоки</th></tr></thead>
+      <thead id="histHead"></thead>
       <tbody id="hist"></tbody>
     </table></div>
+  </section>
+
+  <div class="status" id="status"></div>
+</div>
+
+<div class="wrap" id="settings" hidden>
+  <header>
+    <button class="back" id="closeSettings">‹ Готово</button>
+    <h1>Настройки</h1>
+  </header>
+
+  <section class="card">
+    <label class="switch"><input type="checkbox" id="sleepOn"><span>Отмечать подъём и отбой, считать сон</span></label>
+  </section>
+
+  <section class="card">
+    <div class="label">Мои практики</div>
+    <div id="plist"></div>
+    <button class="add" id="addPractice">+ Добавить практику</button>
+  </section>
+
+  <section class="card editor" id="editor" hidden>
+    <div class="label" id="edTitle">Новая практика</div>
+    <label class="field"><span>Название</span><input type="text" id="edName" maxlength="40" placeholder="например, Мангала-арати"></label>
+    <div class="field" id="edTypeBox"><span>Вид</span>
+      <div class="seg" id="edType">
+        <button data-type="counter">Счётчик</button><button data-type="timer">Таймер</button><button data-type="check">Отметка</button>
+      </div>
+      <div class="hint2" id="edTypeHint"></div>
+    </div>
+    <div id="edCounter">
+      <label class="field"><span>Что считаем</span><input type="text" id="edUnit" maxlength="16" placeholder="кругов"></label>
+      <label class="field"><span>Кнопки, через запятую</span><input type="text" id="edSteps" placeholder="1, 4, 8" inputmode="numeric"></label>
+    </div>
+    <label class="field" id="edGoalBox"><span id="edGoalLabel">Цель на день</span><input type="number" id="edGoal" min="0" max="10000" inputmode="numeric" placeholder="без цели"></label>
+    <div class="field"><span>Цвет</span><div class="swatches" id="edColor"></div></div>
+    <label class="switch"><input type="checkbox" id="edHidden"><span>Скрыть с главного экрана (записи сохранятся)</span></label>
+    <div class="edbtns">
+      <button class="primary" id="edSave">Сохранить</button>
+      <button id="edCancel">Отмена</button>
+    </div>
+    <button class="danger" id="edDelete">Удалить практику</button>
   </section>
 
   <section class="card">
@@ -227,10 +289,10 @@ td.dim{color:#64708a;color:var(--muted)}
       <button id="exp">Сохранить копию</button>
       <button id="imp">Восстановить</button>
     </div>
-    <div class="hint2">Записи хранятся в самом телефоне и не пропадают при обновлении приложения. Копия в файл нужна на случай, если приложение удалят или сменится телефон.</div>
+    <div class="hint2">Записи хранятся в самом телефоне и не пропадают при обновлении приложения. Копия в файл нужна, если приложение удалят или сменится телефон. При восстановлении записи из файла добавляются к уже имеющимся.</div>
   </section>
 
-  <div class="status" id="status"></div>
+  <div class="status" id="status2"></div>
 </div>
 
 <div class="focus" id="focus" hidden>
@@ -255,53 +317,89 @@ td.dim{color:#64708a;color:var(--muted)}
   function pad(n){ return (n<10?'0':'')+n; }
   function each(list, fn){ Array.prototype.forEach.call(list, fn); }
   function extend(){ var o={}; for(var i=0;i<arguments.length;i++){ var s=arguments[i]; if(s) for(var k in s) if(Object.prototype.hasOwnProperty.call(s,k)) o[k]=s[k]; } return o; }
+  function clone(o){ return JSON.parse(JSON.stringify(o)); }
+  function esc(t){ return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function keyOf(d){ return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
   function fromKey(k){ var p=k.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
   function addDays(k,n){ var d=fromKey(k); d.setDate(d.getDate()+n); return keyOf(d); }
   function hm(iso){ if(!iso) return null; var d=new Date(iso); return pad(d.getHours())+':'+pad(d.getMinutes()); }
   function fmtDur(min){ if(min==null||!isFinite(min)||min<=0) return '—'; min=Math.round(min); return Math.floor(min/60)+' ч '+pad(min%60); }
+  function closestAttr(el, attr, stop){ while(el && el!==stop && el.getAttribute && el.getAttribute(attr)==null) el=el.parentNode; return (el && el!==stop && el.getAttribute) ? el : null; }
   var DOW = ['вс','пн','вт','ср','чт','пт','сб'];
   var MON = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
   var CUTOFF = 5; // отбой до 5:00 считается вечером предыдущего дня
+  var COLORS = ['dawn','night','tulsi','rose','teal'];
+  var TYPE_NAME = {counter:'счётчик', timer:'таймер', check:'отметка'};
 
-  function todayKey(){ return keyOf(new Date()); }
-  var cur = todayKey();
+  // ---------- состояние ----------
+  // practices: [{id, name, type:'counter'|'timer'|'check', color, goal, unit, steps:[1,4,8], hidden}]
+  // days[k] = {date, wake, sleep, v:{ <id>: число | {min, start, ses:[{from,min}]} | ISO-время отметки }}
+  function defaultPractices(){ return [
+    {id:'japa',  name:'Джапа',           type:'counter', color:'tulsi', goal:16, unit:'кругов', steps:[1,4,8]},
+    {id:'read',  name:'Чтение книг',     type:'timer',   color:'dawn'},
+    {id:'sloka', name:'Повторение шлок', type:'timer',   color:'night'}
+  ]; }
+  var state = {sleepOn:true, practices:defaultPractices(), welcomed:false};
   var days = {};
-  var goal = 16;
+  function todayKey(){ return keyOf(new Date()); }
+  var cur = todayKey(), lastToday = cur;
 
-  function day(k){ return days[k] || {date:k, wake:null, sleep:null, japa:0, readMin:0, sessions:[], readStart:null, slokaMin:0, slokaSessions:[], slokaStart:null}; }
-  function setStatus(t,err){ var s=$('status'); s.textContent=t||''; s.className='status'+(err?' err':''); }
+  function pById(id){ for(var i=0;i<state.practices.length;i++) if(state.practices[i].id===id) return state.practices[i]; return null; }
+  function visible(){ return state.practices.filter(function(p){ return !p.hidden; }); }
+  function day(k){ return days[k] || {date:k, wake:null, sleep:null, v:{}}; }
+  function val(k,id){ var v=day(k).v; return v ? v[id] : undefined; }
+  function tv(k,id){ var t=val(k,id); return (t && typeof t==='object') ? t : {min:0, start:null, ses:[]}; }
+
+  // записи из первой версии (japa, readMin, readStart, sessions, sloka…) → новая схема
+  function migrateDay(d){
+    if(!d || !d.date) return null;
+    if(d.v) return d;
+    var v={};
+    if(d.japa) v.japa=d.japa;
+    if(d.readMin || d.readStart || (d.sessions && d.sessions.length)) v.read={min:d.readMin||0, start:d.readStart||null, ses:d.sessions||[]};
+    if(d.slokaMin || d.slokaStart || (d.slokaSessions && d.slokaSessions.length)) v.sloka={min:d.slokaMin||0, start:d.slokaStart||null, ses:d.slokaSessions||[]};
+    return {date:d.date, wake:d.wake||null, sleep:d.sleep||null, v:v};
+  }
+
+  function setStatus(t,err){ each([$('status'),$('status2')], function(s){ s.textContent=t||''; s.className='status'+(err?' err':''); }); }
 
   // ---------- хранение ----------
   var LSK = 'sadhana-v1';
-  function snapshot(){ var list=[]; for(var k in days) list.push(days[k]); return JSON.stringify({app:'sadhana', goal:goal, days:list}); }
+  function snapshot(){ var list=[]; for(var k in days) list.push(days[k]); return JSON.stringify({app:'sadhana', version:2, sleepOn:state.sleepOn, welcomed:state.welcomed, practices:state.practices, days:list}); }
   function loadAll(){
-    var raw = null;
+    var raw=null;
     try{ raw = App ? App.load() : localStorage.getItem(LSK); }catch(e){}
-    if(!raw) return;
-    try{ var o=JSON.parse(raw); (o.days||[]).forEach(function(d){ if(d && d.date) days[d.date]=d; }); if(o.goal) goal=o.goal; }
-    catch(e){ setStatus('Не удалось прочитать сохранённые записи.', true); }
+    if(!raw) return false;
+    try{
+      var o=JSON.parse(raw);
+      if(o.practices && o.practices.length!=null){ state.practices=o.practices; }
+      else { state.welcomed=true; var j=pById('japa'); if(o.goal && j) j.goal=o.goal; } // данные первой версии
+      if(o.sleepOn===false) state.sleepOn=false;
+      if(o.welcomed) state.welcomed=true;
+      (o.days||[]).forEach(function(d){ d=migrateDay(d); if(d) days[d.date]=d; });
+      return true;
+    }catch(e){ setStatus('Не удалось прочитать сохранённые записи.', true); return false; }
   }
-  var saveTimer = null;
+  var saveTimer=null;
   function saveNow(){
     clearTimeout(saveTimer); saveTimer=null;
     try{ if(App) App.save(snapshot()); else localStorage.setItem(LSK, snapshot()); }
     catch(e){ setStatus('Не удалось сохранить запись.', true); }
   }
   function persist(debounce){ clearTimeout(saveTimer); if(debounce) saveTimer=setTimeout(saveNow,600); else saveNow(); }
-  function update(k, patch, debounce){ days[k] = extend(day(k), patch); render(); persist(debounce); }
+  function setDay(k, patch, debounce){ days[k]=extend(day(k), patch); render(); persist(debounce); }
+  function setVal(k, id, value, debounce){ var d=day(k), v=extend(d.v); v[id]=value; setDay(k,{v:v},debounce); }
   document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='hidden' && saveTimer) saveNow(); });
   window.flush = function(){ if(saveTimer) saveNow(); };
-  window.onResume = function(){ var t=todayKey(); if(t!==lastToday){ if(cur===lastToday) cur=t; lastToday=t; } render(); };
 
   // ---------- подъём / отбой ----------
   $('btnWake').onclick = function(){
-    if(cur===todayKey()) update(cur,{wake:new Date().toISOString()});
+    if(cur===todayKey()) setDay(cur,{wake:new Date().toISOString()});
     else $('inWake').focus();
   };
   $('btnSleep').onclick = function(){
     var now=new Date(), early=now.getHours()<CUTOFF, k=early?addDays(todayKey(),-1):todayKey();
-    if(cur===todayKey() || (early && cur===k)){ cur=k; update(k,{sleep:now.toISOString()}); }
+    if(cur===todayKey() || (early && cur===k)){ cur=k; setDay(k,{sleep:now.toISOString()}); }
     else $('inSleep').focus();
   };
   function timeOn(k, v, evening){
@@ -309,152 +407,149 @@ td.dim{color:#64708a;color:var(--muted)}
     if(evening && h<CUTOFF) d.setDate(d.getDate()+1);
     d.setHours(h,m,0,0); return d.toISOString();
   }
-  $('inWake').onchange = function(e){ var v=e.target.value; update(cur,{wake: v?timeOn(cur,v,false):null}); };
-  $('inSleep').onchange = function(e){ var v=e.target.value; update(cur,{sleep: v?timeOn(cur,v,true):null}); };
+  $('inWake').onchange = function(e){ var v=e.target.value; setDay(cur,{wake: v?timeOn(cur,v,false):null}); };
+  $('inSleep').onchange = function(e){ var v=e.target.value; setDay(cur,{sleep: v?timeOn(cur,v,true):null}); };
 
-  // ---------- джапа ----------
-  function japa(n){ update(cur,{japa: Math.max(0,(day(cur).japa||0)+n)}, true); }
-  $('j1').onclick=function(){ japa(1); }; $('j4').onclick=function(){ japa(4); };
-  $('j8').onclick=function(){ japa(8); }; $('jm').onclick=function(){ japa(-1); };
-  $('goalIn').onchange = function(e){ var v=parseInt(e.target.value,10); if(v>0){ goal=v; persist(); render(); } };
-
-  // ---------- занятия по времени: чтение книг и повторение шлок ----------
-  var ACTS = {
-    read:  {min:'readMin',  start:'readStart',  ses:'sessions',      tot:'readTot',  run:'running',      play:'play',      list:'sessions',      go:'Начать чтение',     name:'Чтение книг',     color:'#f0a04a'},
-    sloka: {min:'slokaMin', start:'slokaStart', ses:'slokaSessions', tot:'slokaTot', run:'slokaRunning', play:'slokaPlay', list:'slokaSessions', go:'Начать повторение', name:'Повторение шлок', color:'#a5b1f0'}
-  };
-  var ACT_KEYS = ['read','sloka'];
-  each(document.querySelectorAll('[data-add]'), function(b){ b.onclick = function(){
-    var a=ACTS[b.getAttribute('data-act')], n=parseInt(b.getAttribute('data-add'),10), p={};
-    p[a.min]=Math.max(0,(day(cur)[a.min]||0)+n); update(cur,p,true);
-  }; });
-  function toggleAct(k){
-    var a=ACTS[k], d=day(cur), p={};
-    if(d[a.start]){
-      var min=Math.max(1, Math.round((Date.now()-new Date(d[a.start]).getTime())/60000));
-      p[a.start]=null; p[a.min]=(d[a.min]||0)+min; p[a.ses]=(d[a.ses]||[]).concat([{from:d[a.start], min:min}]);
-      closeFocus(); update(cur,p);
-    } else { p[a.start]=new Date().toISOString(); update(cur,p); openFocus(k); }
+  // ---------- практики на главном экране ----------
+  function stepsOf(p){ var s=(p.steps&&p.steps.length)?p.steps:[1]; return s; }
+  function counterCard(p, d){
+    var n=(d.v && d.v[p.id])||0, goal=+p.goal||0, h='';
+    if(goal){
+      var off=276.46*(1-Math.min(1,n/goal));
+      h+='<div class="ring"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="var(--pc-soft)" stroke-width="9"/><circle cx="50" cy="50" r="44" fill="none" stroke="var(--pc)" stroke-width="9" stroke-linecap="round" stroke-dasharray="276.46" stroke-dashoffset="'+off.toFixed(2)+'"/></svg><div class="c"><b>'+n+'</b><span>из '+goal+(p.unit?' '+esc(p.unit):'')+'</span></div></div>';
+    } else h+='<div class="bignum"><b>'+n+'</b><span>'+esc(p.unit||'')+'</span></div>';
+    var btns=stepsOf(p).map(function(s){ return '<button data-do="add" data-n="'+s+'">+'+s+'</button>'; });
+    btns.push('<button data-do="add" data-n="-'+Math.min.apply(null,stepsOf(p))+'">−'+Math.min.apply(null,stepsOf(p))+'</button>');
+    var rows=''; for(var i=0;i<btns.length;i+=2) rows+='<div class="row">'+btns[i]+(btns[i+1]||'<span></span>')+'</div>';
+    return '<div class="label">'+esc(p.name)+'</div><div class="japa">'+h+'<div class="jbtns">'+rows+'</div></div>';
   }
-  ACT_KEYS.forEach(function(k){ var a=ACTS[k];
-    $(a.play).onclick = function(){ toggleAct(k); };
-    $(a.run).onclick = function(){ openFocus(k); };
-  });
+  function timerCard(p, d){
+    var t=tv(d.date,p.id), on=!!t.start, goal=+p.goal||0, h='';
+    h+='<div class="label">'+esc(p.name)+'</div>';
+    h+='<div class="read"><div class="tot"><b>'+(t.min||0)+'</b> <span>мин сегодня'+(goal?' из '+goal:'')+'</span><div class="running" data-do="open" data-run="'+p.id+'"'+(on?'':' hidden')+'></div></div>';
+    h+='<button class="play'+(on?' on':'')+'" data-do="toggle">'+(on?'Закончить':'Начать')+'</button></div>';
+    if(goal) h+='<div class="bar"><i style="width:'+Math.min(100,Math.round((t.min||0)/goal*100))+'%"></i></div>';
+    h+='<div class="quick">добавить вручную: <button data-do="addmin" data-n="5">+5</button><button data-do="addmin" data-n="15">+15</button><button data-do="addmin" data-n="30">+30</button><button data-do="addmin" data-n="-5">−5</button></div>';
+    if(t.ses && t.ses.length) h+='<div class="sessions">'+t.ses.map(function(x){ return hm(x.from)+' · '+x.min+' мин'; }).join('    ')+'</div>';
+    return h;
+  }
+  function checkCard(p, d){
+    var at=d.v && d.v[p.id];
+    return '<div class="checkrow"><div class="cname">'+esc(p.name)+'</div><button class="checkbtn'+(at?' done':'')+'" data-do="check">'+(at?'✓ '+(typeof at==='string'?hm(at):'сделано'):'Отметить')+'</button></div>';
+  }
+  function renderPractices(d){
+    $('practices').innerHTML = visible().map(function(p){
+      var body = p.type==='counter'?counterCard(p,d) : p.type==='timer'?timerCard(p,d) : checkCard(p,d);
+      return '<section class="card c-'+(p.color||'dawn')+(p.type==='check'?' check':'')+'" data-pid="'+esc(p.id)+'">'+body+'</section>';
+    }).join('');
+  }
+  $('practices').onclick = function(e){
+    var b=closestAttr(e.target,'data-do',this); if(!b) return;
+    var card=closestAttr(b,'data-pid',this); if(!card) return;
+    var p=pById(card.getAttribute('data-pid')); if(!p) return;
+    var act=b.getAttribute('data-do'), n=parseInt(b.getAttribute('data-n'),10);
+    if(act==='add'){ setVal(cur,p.id,Math.max(0,(val(cur,p.id)||0)+n),true); }
+    else if(act==='addmin'){ var t=clone(tv(cur,p.id)); t.min=Math.max(0,(t.min||0)+n); setVal(cur,p.id,t,true); }
+    else if(act==='toggle'){ toggleTimer(p.id); }
+    else if(act==='open'){ openFocus(p.id); }
+    else if(act==='check'){ setVal(cur,p.id, val(cur,p.id)?null:(cur===todayKey()?new Date().toISOString():true)); }
+  };
 
-  // ---------- полноэкранный таймер; экран не гаснет ----------
-  var focusAct = null;
+  // ---------- таймер на весь экран; экран не гаснет ----------
+  function toggleTimer(id){
+    var t=clone(tv(cur,id));
+    if(t.start){
+      var min=Math.max(1, Math.round((Date.now()-new Date(t.start).getTime())/60000));
+      t.ses=(t.ses||[]).concat([{from:t.start, min:min}]); t.min=(t.min||0)+min; t.start=null;
+      closeFocus(); setVal(cur,id,t);
+    } else { t.start=new Date().toISOString(); setVal(cur,id,t); openFocus(id); }
+  }
+  var focusId=null;
   function screenOn(on){ try{ if(App) App.keepScreenOn(!!on); }catch(e){} }
-  function openFocus(k){
-    focusAct=k; var a=ACTS[k];
-    $('focus').style.setProperty('--fc', a.color);
-    $('fName').textContent=a.name;
+  function openFocus(id){
+    var p=pById(id); if(!p) return;
+    focusId=id; $('focus').className='focus c-'+(p.color||'dawn');
+    $('fName').textContent=p.name;
     $('focus').hidden=false; document.body.style.overflow='hidden';
     screenOn(true); tick();
   }
-  function closeFocus(){ focusAct=null; $('focus').hidden=true; document.body.style.overflow=''; screenOn(false); }
-  $('fStop').onclick = function(){ if(focusAct) toggleAct(focusAct); };
+  function closeFocus(){ focusId=null; $('focus').hidden=true; document.body.style.overflow=''; screenOn(false); }
+  $('fStop').onclick = function(){ if(focusId) toggleTimer(focusId); };
   $('fHide').onclick = closeFocus;
-  // кнопка «Назад» на телефоне сворачивает таймер, а не закрывает приложение
-  window.onBack = function(){ if(focusAct){ closeFocus(); return true; } return false; };
+  window.onBack = function(){
+    if(focusId){ closeFocus(); return true; }
+    if(!$('settings').hidden){ closeSettings(); return true; }
+    return false;
+  };
 
   // ---------- день ----------
   $('prev').onclick=function(){ cur=addDays(cur,-1); render(); };
   $('next').onclick=function(){ if(cur<todayKey()){ cur=addDays(cur,1); render(); } };
-  $('hist').onclick = function(e){
-    var el=e.target; while(el && el!==this && !el.getAttribute('data-d')) el=el.parentNode;
-    if(el && el.getAttribute && el.getAttribute('data-d')){ cur=el.getAttribute('data-d'); render(); window.scrollTo(0,0); }
-  };
-
-  // ---------- резервная копия ----------
-  $('exp').onclick = function(){
-    saveNow();
-    var name='sadhana-'+todayKey()+'.json';
-    if(App){ try{ App.exportBackup(snapshot(), name); }catch(e){ setStatus('Не получилось сохранить копию.',true); } return; }
-    try{
-      var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([snapshot()],{type:'application/json'}));
-      a.download=name; document.body.appendChild(a); a.click(); setTimeout(function(){ a.parentNode.removeChild(a); },1000);
-    }catch(e){ setStatus('Не получилось сохранить копию.',true); }
-  };
-  window.onBackupSaved = function(ok){ setStatus(ok?'Копия сохранена.':'Копия не сохранена.', !ok); };
-  var fileIn=null;
-  $('imp').onclick = function(){
-    if(App){ try{ App.importBackup(); }catch(e){} return; }
-    if(!fileIn){ fileIn=document.createElement('input'); fileIn.type='file'; fileIn.accept='.json,application/json';
-      fileIn.onchange=function(){ var f=fileIn.files[0]; if(!f) return; var r=new FileReader(); r.onload=function(){ window.onBackupLoaded(r.result); fileIn.value=''; }; r.readAsText(f); }; }
-    fileIn.click();
-  };
-  // Слияние: дни из копии добавляются, а уже записанные в телефоне поля важнее.
-  window.onBackupLoaded = function(text){
-    if(text==null) return;
-    try{
-      var o=JSON.parse(text), added=0, merged=0;
-      if(!o || !o.days || !o.days.forEach) throw new Error('format');
-      o.days.forEach(function(d){
-        if(!d || !d.date) return;
-        if(!days[d.date]){ days[d.date]=d; added++; }
-        else { var mine=days[d.date], out=extend(d);
-          for(var f in mine){ var v=mine[f]; if(v!==null && v!==0 && !(v && v.length===0)) out[f]=v; }
-          days[d.date]=out; merged++; }
-      });
-      if(o.goal && !goal) goal=o.goal;
-      saveNow(); render(); setStatus('Восстановлено: новых дней '+added+', дополнено '+merged+'.');
-    }catch(e){ setStatus('Этот файл не похож на копию дневника.',true); }
-  };
+  $('hist').onclick = function(e){ var tr=closestAttr(e.target,'data-d',this); if(tr){ cur=tr.getAttribute('data-d'); render(); window.scrollTo(0,0); } };
+  window.onResume = function(){ var t=todayKey(); if(t!==lastToday){ if(cur===lastToday) cur=t; lastToday=t; } render(); };
 
   // ---------- расчёты ----------
   function sleepBefore(k){ var w=day(k).wake, s=day(addDays(k,-1)).sleep; if(!w||!s) return null; var m=(new Date(w)-new Date(s))/60000; return (m>0&&m<20*60)?m:null; }
   function clockMin(iso, evening){ var d=new Date(iso), m=d.getHours()*60+d.getMinutes(); if(evening && d.getHours()<12) m+=1440; return m; }
   function fromClock(m){ m=Math.round(m)%1440; return pad(Math.floor(m/60))+':'+pad(m%60); }
   function mean(a){ if(!a.length) return null; var s=0; a.forEach(function(x){ s+=x; }); return s/a.length; }
-  function round1(x){ return x==null?'—':Math.round(x*10)/10; }
+  function r1(x){ return x==null?'—':Math.round(x*10)/10; }
+  function cellOf(p,k){
+    var v=val(k,p.id);
+    if(p.type==='counter') return v||null;
+    if(p.type==='timer') return (v&&v.min)? v.min+'′' : null;
+    return v ? '✓' : null;
+  }
 
-  // ---------- отрисовка ----------
+  // ---------- отрисовка главного экрана ----------
   function render(){
     var d=day(cur), isToday=cur===todayKey(), dt=fromKey(cur), label=DOW[dt.getDay()]+', '+dt.getDate()+' '+MON[dt.getMonth()];
-    $('dayname').innerHTML = (isToday?'Сегодня':label)+'<small>'+(isToday?label:'прошлый день — правка')+'</small>';
-    $('next').disabled = isToday;
+    $('dayname').innerHTML=(isToday?'Сегодня':label)+'<small>'+(isToday?label:'прошлый день — правка')+'</small>';
+    $('next').disabled=isToday;
+    $('welcome').hidden=state.welcomed;
 
-    var w=hm(d.wake), s=hm(d.sleep);
-    $('tWake').textContent=w||'—'; $('tSleep').textContent=s||'—';
-    $('btnWake').className='mark wake'+(w?' done':''); $('btnSleep').className='mark sleep'+(s?' done':'');
-    $('hWake').textContent = w?'отмечено':(isToday?'нажми, когда встал':'введи время ниже');
-    $('hSleep').textContent = s?'отмечено':(isToday?'нажми перед сном':'введи время ниже');
-    if(document.activeElement!==$('inWake')) $('inWake').value=w||'';
-    if(document.activeElement!==$('inSleep')) $('inSleep').value=s||'';
-    $('sleepDur').textContent = fmtDur(sleepBefore(cur));
-
-    var j=d.japa||0;
-    $('japaN').textContent=j; $('japaOf').textContent='из '+goal;
-    $('ringArc').setAttribute('stroke-dashoffset', 276.46*(1-Math.min(1,j/goal)));
-    if(document.activeElement!==$('goalIn')) $('goalIn').value=goal;
-
-    ACT_KEYS.forEach(function(k){ var a=ACTS[k], on=!!d[a.start];
-      $(a.tot).textContent = d[a.min]||0;
-      $(a.play).textContent = on?'Закончить':a.go;
-      $(a.play).className = 'play'+(k==='sloka'?' alt':'')+(on?' on':'');
-      $(a.run).hidden = !on;
-      $(a.list).textContent = (d[a.ses]||[]).map(function(x){ return hm(x.from)+' · '+x.min+' мин'; }).join('    ');
-    });
+    $('sleepCard').hidden=!state.sleepOn;
+    if(state.sleepOn){
+      var w=hm(d.wake), s=hm(d.sleep);
+      $('tWake').textContent=w||'—'; $('tSleep').textContent=s||'—';
+      $('btnWake').className='mark wake'+(w?' done':''); $('btnSleep').className='mark sleep'+(s?' done':'');
+      $('hWake').textContent=w?'отмечено':(isToday?'нажми, когда встал':'введи время ниже');
+      $('hSleep').textContent=s?'отмечено':(isToday?'нажми перед сном':'введи время ниже');
+      if(document.activeElement!==$('inWake')) $('inWake').value=w||'';
+      if(document.activeElement!==$('inSleep')) $('inSleep').value=s||'';
+      $('sleepDur').textContent=fmtDur(sleepBefore(cur));
+    }
+    renderPractices(d);
     tick();
 
     var keys=[], i; for(i=0;i<14;i++) keys.push(addDays(todayKey(),-i));
-    $('hist').innerHTML = keys.map(function(k){
+    var ps=visible();
+    var head='<tr><th>День</th>'+(state.sleepOn?'<th>Встал</th><th>Лёг</th><th>Сон</th>':'')+ps.map(function(p){ return '<th>'+esc(p.name.length>9?p.name.slice(0,8)+'…':p.name)+'</th>'; }).join('')+'</tr>';
+    $('histHead').innerHTML=head;
+    $('hist').innerHTML=keys.map(function(k){
       var x=day(k), t=fromKey(k), sb=sleepBefore(k);
       function c(v){ return v?'<td>'+v+'</td>':'<td class="dim">—</td>'; }
-      return '<tr data-d="'+k+'"'+(k===cur?' class="cur"':'')+'><td>'+DOW[t.getDay()]+' '+t.getDate()+'</td>'+c(hm(x.wake))+c(hm(x.sleep))+c(sb?fmtDur(sb):null)+c(x.japa||null)+c(x.readMin?x.readMin+'′':null)+c(x.slokaMin?x.slokaMin+'′':null)+'</tr>';
+      return '<tr data-d="'+k+'"'+(k===cur?' class="cur"':'')+'><td>'+DOW[t.getDay()]+' '+t.getDate()+'</td>'+
+        (state.sleepOn? c(hm(x.wake))+c(hm(x.sleep))+c(sb?fmtDur(sb):null) : '')+
+        ps.map(function(p){ return c(cellOf(p,k)); }).join('')+'</tr>';
     }).join('');
 
-    var wk=keys.slice(0,7);
-    var ws=wk.map(function(k){ return day(k).wake; }).filter(Boolean).map(function(v){ return clockMin(v); });
-    var ss=wk.map(function(k){ return day(k).sleep; }).filter(Boolean).map(function(v){ return clockMin(v,true); });
-    var ds=wk.map(sleepBefore).filter(function(v){ return v!=null; });
-    $('aWake').textContent = ws.length?fromClock(mean(ws)):'—';
-    $('aSleep').textContent = ss.length?fromClock(mean(ss)):'—';
-    $('aDur').textContent = fmtDur(mean(ds));
-    $('aJapa').textContent = round1(mean(wk.map(function(k){ return day(k).japa||0; })));
-    $('aRead').textContent = Math.round(mean(wk.map(function(k){ return day(k).readMin||0; })));
-    $('aSloka').textContent = Math.round(mean(wk.map(function(k){ return day(k).slokaMin||0; })));
-    chart(keys.slice().reverse());
+    var wk=keys.slice(0,7), cells=[];
+    if(state.sleepOn){
+      var ws=wk.map(function(k){ return day(k).wake; }).filter(Boolean).map(function(v){ return clockMin(v); });
+      var ss=wk.map(function(k){ return day(k).sleep; }).filter(Boolean).map(function(v){ return clockMin(v,true); });
+      var ds=wk.map(sleepBefore).filter(function(v){ return v!=null; });
+      cells.push([ws.length?fromClock(mean(ws)):'—','подъём'],[ss.length?fromClock(mean(ss)):'—','отбой'],[fmtDur(mean(ds)),'сон']);
+    }
+    ps.forEach(function(p){
+      if(p.type==='counter') cells.push([r1(mean(wk.map(function(k){ return val(k,p.id)||0; }))), esc(p.name)+(p.unit?', '+esc(p.unit):'')]);
+      else if(p.type==='timer') cells.push([Math.round(mean(wk.map(function(k){ return tv(k,p.id).min||0; }))), esc(p.name)+', мин']);
+      else cells.push([wk.filter(function(k){ return !!val(k,p.id); }).length+' из 7', esc(p.name)]);
+    });
+    var rows=''; for(i=0;i<cells.length;i+=3){ rows+='<div class="row">'; for(var j=i;j<i+3;j++) rows+= cells[j]?'<div><b>'+cells[j][0]+'</b><span>'+cells[j][1]+'</span></div>':'<div></div>'; rows+='</div>'; }
+    $('avg').innerHTML=rows || '<span class="hint2">Пока нечего считать.</span>';
+    $('chart').hidden=!state.sleepOn;
+    if(state.sleepOn) chart(keys.slice().reverse());
   }
 
   function chart(keys){
@@ -469,31 +564,160 @@ td.dim{color:#64708a;color:var(--muted)}
     $('chart').innerHTML='<svg viewBox="0 0 '+W+' '+H+'">'+g+'</svg>';
   }
 
+  function elapsed(start){ return Math.max(0,Math.floor((Date.now()-new Date(start).getTime())/1000)); }
   function tick(){
-    var d=day(cur);
-    ACT_KEYS.forEach(function(k){ var a=ACTS[k];
-      if(d[a.start]){ var s=Math.max(0,Math.floor((Date.now()-new Date(d[a.start]).getTime())/1000)); $(a.run).textContent='идёт '+Math.floor(s/3600)+':'+pad(Math.floor(s/60)%60)+':'+pad(s%60)+' · открыть таймер'; }
+    each(document.querySelectorAll('[data-run]'), function(el){
+      var t=tv(cur, el.getAttribute('data-run'));
+      if(t.start){ var s=elapsed(t.start); el.textContent='идёт '+Math.floor(s/3600)+':'+pad(Math.floor(s/60)%60)+':'+pad(s%60)+' · открыть таймер'; }
     });
-    if(focusAct){
-      var a=ACTS[focusAct];
-      if(!d[a.start]){ closeFocus(); return; }
-      var s=Math.max(0,Math.floor((Date.now()-new Date(d[a.start]).getTime())/1000)), h=Math.floor(s/3600), m=Math.floor(s/60)%60;
-      $('fClock').innerHTML = (h? h+':'+pad(m) : m)+'<small>:'+pad(s%60)+'</small>';
-      $('fSince').textContent = 'начато в '+hm(d[a.start]);
-      $('fDay').innerHTML = 'за сегодня вместе с этим: <b>'+((d[a.min]||0)+Math.round(s/60))+'</b> мин';
+    if(focusId){
+      var t=tv(cur,focusId);
+      if(!t.start){ closeFocus(); return; }
+      var s=elapsed(t.start), h=Math.floor(s/3600), m=Math.floor(s/60)%60, p=pById(focusId);
+      $('fClock').innerHTML=(h? h+':'+pad(m) : m)+'<small>:'+pad(s%60)+'</small>';
+      $('fSince').textContent='начато в '+hm(t.start);
+      $('fDay').innerHTML='за сегодня вместе с этим: <b>'+((t.min||0)+Math.round(s/60))+'</b> мин'+(p&&p.goal?' из '+p.goal:'');
     }
   }
   setInterval(tick,1000);
-  var lastToday=todayKey();
   setInterval(function(){ var t=todayKey(); if(t!==lastToday){ if(cur===lastToday) cur=t; lastToday=t; render(); } },30000);
+
+  // ---------- приветствие ----------
+  $('welcomeClose').onclick=function(){ state.welcomed=true; persist(); render(); };
+  $('welcomeGo').onclick=function(){ state.welcomed=true; persist(); openSettings(); };
+
+  // ---------- настройки ----------
+  function openSettings(){ setStatus(''); closeEditor(); $('main').hidden=true; $('settings').hidden=false; renderSettings(); window.scrollTo(0,0); }
+  function closeSettings(){ setStatus(''); closeEditor(); $('settings').hidden=true; $('main').hidden=false; render(); window.scrollTo(0,0); }
+  $('openSettings').onclick=openSettings;
+  $('closeSettings').onclick=closeSettings;
+  $('sleepOn').onchange=function(e){ state.sleepOn=!!e.target.checked; persist(); };
+
+  function describe(p){
+    var t=TYPE_NAME[p.type]||p.type;
+    if(p.type==='counter') return t+(p.goal?' · цель '+p.goal+(p.unit?' '+p.unit:''):'')+' · кнопки '+stepsOf(p).join(', ');
+    if(p.type==='timer') return t+(p.goal?' · цель '+p.goal+' мин':'');
+    return t+' «сделано»';
+  }
+  function renderSettings(){
+    $('sleepOn').checked=state.sleepOn;
+    var n=state.practices.length;
+    $('plist').innerHTML = n ? state.practices.map(function(p,i){
+      return '<div class="pitem c-'+(p.color||'dawn')+(p.hidden?' off':'')+'" data-i="'+i+'"><span class="dot"></span><div class="pinfo"><b>'+esc(p.name)+'</b><span>'+(p.hidden?'скрыта · ':'')+esc(describe(p))+'</span></div>'+
+        '<button data-mv="-1" aria-label="Выше"'+(i===0?' disabled':'')+'>↑</button><button data-mv="1" aria-label="Ниже"'+(i===n-1?' disabled':'')+'>↓</button><button class="edit" data-ed="1" aria-label="Изменить">✎</button></div>';
+    }).join('') : '<div class="hint2">Практик пока нет. Добавьте первую.</div>';
+  }
+  $('plist').onclick=function(e){
+    var row=closestAttr(e.target,'data-i',this); if(!row) return;
+    var i=+row.getAttribute('data-i'), b=e.target;
+    if(b.getAttribute('data-mv')){ var j=i+(+b.getAttribute('data-mv')); if(j<0||j>=state.practices.length) return;
+      var tmp=state.practices[i]; state.practices[i]=state.practices[j]; state.practices[j]=tmp; persist(); renderSettings(); closeEditor(); }
+    else if(b.getAttribute('data-ed')) openEditor(state.practices[i]);
+  };
+
+  // редактор практики
+  var draft=null, draftIsNew=false, delArmed=false;
+  function openEditor(p){
+    draftIsNew=!p;
+    draft = p ? clone(p) : {id:null, name:'', type:'check', color:COLORS[state.practices.length%COLORS.length], goal:0, unit:'', steps:[1], hidden:false};
+    $('edTitle').textContent=draftIsNew?'Новая практика':'Изменить практику';
+    $('edName').value=draft.name;
+    $('edUnit').value=draft.unit||'';
+    $('edSteps').value=stepsOf(draft).join(', ');
+    $('edGoal').value=draft.goal?draft.goal:'';
+    $('edHidden').checked=!!draft.hidden;
+    $('edDelete').hidden=draftIsNew; disarm();
+    $('editor').hidden=false; edRender();
+    setTimeout(function(){ $('editor').scrollIntoView(); if(draftIsNew) $('edName').focus(); },30);
+  }
+  function closeEditor(){ draft=null; $('editor').hidden=true; disarm(); }
+  function edRender(){
+    if(!draft) return;
+    each($('edType').querySelectorAll('button'), function(b){ b.className = b.getAttribute('data-type')===draft.type?'on':''; });
+    $('edType').className='seg'+(draftIsNew?'':' locked');
+    $('edTypeHint').textContent = draftIsNew ? ({counter:'Считать количество: круги, поклоны, главы.', timer:'Засекать время, с большим таймером на экране.', check:'Просто отметить, что сделано сегодня.'})[draft.type]
+                                             : 'Вид уже созданной практики не меняется. Нужен другой вид — создайте новую практику.';
+    $('edCounter').hidden = draft.type!=='counter';
+    $('edGoalBox').hidden = draft.type==='check';
+    $('edGoalLabel').textContent = draft.type==='timer' ? 'Цель на день, минут' : 'Цель на день';
+    $('edColor').innerHTML = COLORS.map(function(c){ return '<button class="c-'+c+(draft.color===c?' on':'')+'" data-color="'+c+'" aria-label="'+c+'"></button>'; }).join('');
+  }
+  $('edType').onclick=function(e){ var t=e.target.getAttribute && e.target.getAttribute('data-type'); if(t && draft && draftIsNew){ draft.type=t; edRender(); } };
+  $('edColor').onclick=function(e){ var c=e.target.getAttribute && e.target.getAttribute('data-color'); if(c && draft){ draft.color=c; edRender(); } };
+  $('addPractice').onclick=function(){ openEditor(null); };
+  $('edCancel').onclick=closeEditor;
+  $('edSave').onclick=function(){
+    if(!draft) return;
+    var name=$('edName').value.replace(/^\s+|\s+$/g,'');
+    if(!name){ setStatus('Впишите название практики.', true); $('edName').focus(); return; }
+    draft.name=name;
+    draft.hidden=$('edHidden').checked;
+    var g=parseInt($('edGoal').value,10); draft.goal = (g>0 && draft.type!=='check') ? g : 0;
+    if(draft.type==='counter'){
+      draft.unit=$('edUnit').value.replace(/^\s+|\s+$/g,'');
+      var st=$('edSteps').value.split(/[^0-9]+/).map(function(x){ return parseInt(x,10); }).filter(function(x){ return x>0 && x<10000; });
+      draft.steps = st.length ? st.slice(0,5) : [1];
+    } else { delete draft.unit; delete draft.steps; }
+    if(draftIsNew){ draft.id='p'+Date.now().toString(36); state.practices.push(draft); }
+    else for(var i=0;i<state.practices.length;i++) if(state.practices[i].id===draft.id) state.practices[i]=draft;
+    persist(); closeEditor(); renderSettings(); setStatus('Сохранено: «'+name+'».');
+  };
+  function disarm(){ delArmed=false; $('edDelete').className='danger'; $('edDelete').textContent='Удалить практику'; }
+  $('edDelete').onclick=function(){
+    if(!draft || draftIsNew) return;
+    if(!delArmed){ delArmed=true; this.className='danger armed'; this.textContent='Точно удалить? Нажмите ещё раз'; return; }
+    var id=draft.id, name=draft.name;
+    if(focusId===id) closeFocus();
+    state.practices=state.practices.filter(function(p){ return p.id!==id; });
+    persist(); closeEditor(); renderSettings(); setStatus('Практика «'+name+'» удалена. Если нужно убрать её лишь на время, лучше «Скрыть».');
+  };
+
+  // ---------- резервная копия ----------
+  $('exp').onclick=function(){
+    saveNow();
+    var name='sadhana-'+todayKey()+'.json';
+    if(App){ try{ App.exportBackup(snapshot(), name); }catch(e){ setStatus('Не получилось сохранить копию.',true); } return; }
+    try{
+      var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([snapshot()],{type:'application/json'}));
+      a.download=name; document.body.appendChild(a); a.click(); setTimeout(function(){ a.parentNode.removeChild(a); },1000);
+    }catch(e){ setStatus('Не получилось сохранить копию.',true); }
+  };
+  window.onBackupSaved=function(ok){ setStatus(ok?'Копия сохранена.':'Копия не сохранена.', !ok); };
+  var fileIn=null;
+  $('imp').onclick=function(){
+    if(App){ try{ App.importBackup(); }catch(e){} return; }
+    if(!fileIn){ fileIn=document.createElement('input'); fileIn.type='file'; fileIn.accept='.json,application/json';
+      fileIn.onchange=function(){ var f=fileIn.files[0]; if(!f) return; var r=new FileReader(); r.onload=function(){ window.onBackupLoaded(r.result); fileIn.value=''; }; r.readAsText(f); }; }
+    fileIn.click();
+  };
+  function empty(v){ return v==null || v===0 || v===false || (typeof v==='object' && !v.start && !v.min && !(v.ses&&v.ses.length)); }
+  // Слияние: дни и практики из копии добавляются; то, что уже записано в телефоне, важнее.
+  window.onBackupLoaded=function(text){
+    if(text==null) return;
+    try{
+      var o=JSON.parse(text), added=0, merged=0, newP=0;
+      if(!o || !o.days || !o.days.forEach) throw new Error('format');
+      var incoming = (o.practices && o.practices.length!=null) ? o.practices : defaultPractices();
+      incoming.forEach(function(p){ if(p && p.id && !pById(p.id)){ state.practices.push(p); newP++; } });
+      o.days.forEach(function(d){
+        d=migrateDay(d); if(!d) return;
+        var mine=days[d.date];
+        if(!mine){ days[d.date]=d; added++; return; }
+        var out={date:d.date, wake:mine.wake||d.wake||null, sleep:mine.sleep||d.sleep||null, v:extend(d.v)};
+        for(var id in mine.v) if(!empty(mine.v[id])) out.v[id]=mine.v[id];
+        days[d.date]=out; merged++;
+      });
+      saveNow(); render(); if(!$('settings').hidden) renderSettings();
+      setStatus('Восстановлено: новых дней '+added+', дополнено '+merged+(newP?', практик добавлено '+newP:'')+'.');
+    }catch(e){ setStatus('Этот файл не похож на копию дневника.',true); }
+  };
 
   // ---------- запуск ----------
   try{ if(App && App.isDark()) document.documentElement.setAttribute('data-theme','dark'); }catch(e){}
   if(!App && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme','dark');
   loadAll(); render();
   // если таймер шёл, когда приложение закрыли, — сразу показать его
-  var td=day(todayKey());
-  ACT_KEYS.forEach(function(k){ if(!focusAct && td[ACTS[k].start]){ cur=todayKey(); render(); openFocus(k); } });
+  visible().forEach(function(p){ if(!focusId && p.type==='timer' && tv(todayKey(),p.id).start){ cur=todayKey(); render(); openFocus(p.id); } });
 })();
 
 </script>

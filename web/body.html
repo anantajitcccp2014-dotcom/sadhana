@@ -1,14 +1,20 @@
-<div class="wrap">
+<div class="wrap" id="main">
   <header>
     <h1>Садхана</h1>
     <div class="daynav">
       <button id="prev" aria-label="Предыдущий день">‹</button>
       <div class="dayname" id="dayname"></div>
       <button id="next" aria-label="Следующий день">›</button>
+      <button id="openSettings" class="gear" aria-label="Настройки">⚙</button>
     </div>
   </header>
 
-  <section class="card">
+  <div class="welcome card" id="welcome" hidden>
+    <b>Добро пожаловать!</b> Это ваш дневник садханы. Набор практик можно изменить: добавить свои, убрать лишние, поменять цели. Нажмите <button class="inl" id="welcomeGo">⚙ Настройки</button>
+    <button class="close" id="welcomeClose" aria-label="Закрыть">×</button>
+  </div>
+
+  <section class="card" id="sleepCard">
     <div class="label">Подъём и отбой</div>
     <div class="row">
       <button class="mark wake" id="btnWake"><span class="what">Встал</span><span class="t" id="tWake">—</span><span class="hint" id="hWake"></span></button>
@@ -21,64 +27,58 @@
     <div class="sleepline"><span>Сон прошлой ночью</span><b id="sleepDur">—</b></div>
   </section>
 
-  <section class="card">
-    <div class="label">Джапа · круги по 108</div>
-    <div class="japa">
-      <div class="ring">
-        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="var(--tulsi-soft)" stroke-width="9"/><circle id="ringArc" cx="50" cy="50" r="44" fill="none" stroke="var(--tulsi)" stroke-width="9" stroke-linecap="round" stroke-dasharray="276.46" stroke-dashoffset="276.46"/></svg>
-        <div class="c"><b id="japaN">0</b><span id="japaOf">из 16</span></div>
-      </div>
-      <div class="jbtns">
-        <div class="row"><button id="j1">+1</button><button id="j4">+4</button></div>
-        <div class="row"><button id="j8">+8</button><button id="jm">−1</button></div>
-      </div>
-    </div>
-    <div class="goal"><label for="goalIn">Цель на день:</label><input id="goalIn" type="number" min="1" max="192" inputmode="numeric">кругов</div>
-  </section>
-
-  <section class="card">
-    <div class="label">Чтение книг</div>
-    <div class="read">
-      <div class="tot"><b id="readTot">0</b> <span>мин сегодня</span><div class="running" id="running" hidden></div></div>
-      <button class="play" id="play">Начать чтение</button>
-    </div>
-    <div class="quick">добавить вручную:
-      <button data-act="read" data-add="5">+5</button><button data-act="read" data-add="15">+15</button><button data-act="read" data-add="30">+30</button><button data-act="read" data-add="-5">−5</button>
-    </div>
-    <div class="sessions" id="sessions"></div>
-  </section>
-
-  <section class="card">
-    <div class="label">Повторение шлок</div>
-    <div class="read">
-      <div class="tot"><b id="slokaTot">0</b> <span>мин сегодня</span><div class="running" id="slokaRunning" hidden></div></div>
-      <button class="play alt" id="slokaPlay">Начать повторение</button>
-    </div>
-    <div class="quick">добавить вручную:
-      <button data-act="sloka" data-add="5">+5</button><button data-act="sloka" data-add="15">+15</button><button data-act="sloka" data-add="30">+30</button><button data-act="sloka" data-add="-5">−5</button>
-    </div>
-    <div class="sessions" id="slokaSessions"></div>
-  </section>
+  <div id="practices"></div>
 
   <section class="card">
     <div class="label">Последние 7 дней · в среднем</div>
-    <div class="avg">
-      <div class="row">
-        <div><b id="aWake">—</b><span>подъём</span></div>
-        <div><b id="aSleep">—</b><span>отбой</span></div>
-        <div><b id="aDur">—</b><span>сон</span></div>
-      </div>
-      <div class="row">
-        <div><b id="aJapa">—</b><span>кругов джапы</span></div>
-        <div><b id="aRead">—</b><span>мин чтения</span></div>
-        <div><b id="aSloka">—</b><span>мин на шлоки</span></div>
-      </div>
-    </div>
+    <div class="avg" id="avg"></div>
     <div class="chart" id="chart"></div>
     <div class="tbl"><table>
-      <thead><tr><th>День</th><th>Встал</th><th>Лёг</th><th>Сон</th><th>Джапа</th><th>Чтен.</th><th>Шлоки</th></tr></thead>
+      <thead id="histHead"></thead>
       <tbody id="hist"></tbody>
     </table></div>
+  </section>
+
+  <div class="status" id="status"></div>
+</div>
+
+<div class="wrap" id="settings" hidden>
+  <header>
+    <button class="back" id="closeSettings">‹ Готово</button>
+    <h1>Настройки</h1>
+  </header>
+
+  <section class="card">
+    <label class="switch"><input type="checkbox" id="sleepOn"><span>Отмечать подъём и отбой, считать сон</span></label>
+  </section>
+
+  <section class="card">
+    <div class="label">Мои практики</div>
+    <div id="plist"></div>
+    <button class="add" id="addPractice">+ Добавить практику</button>
+  </section>
+
+  <section class="card editor" id="editor" hidden>
+    <div class="label" id="edTitle">Новая практика</div>
+    <label class="field"><span>Название</span><input type="text" id="edName" maxlength="40" placeholder="например, Мангала-арати"></label>
+    <div class="field" id="edTypeBox"><span>Вид</span>
+      <div class="seg" id="edType">
+        <button data-type="counter">Счётчик</button><button data-type="timer">Таймер</button><button data-type="check">Отметка</button>
+      </div>
+      <div class="hint2" id="edTypeHint"></div>
+    </div>
+    <div id="edCounter">
+      <label class="field"><span>Что считаем</span><input type="text" id="edUnit" maxlength="16" placeholder="кругов"></label>
+      <label class="field"><span>Кнопки, через запятую</span><input type="text" id="edSteps" placeholder="1, 4, 8" inputmode="numeric"></label>
+    </div>
+    <label class="field" id="edGoalBox"><span id="edGoalLabel">Цель на день</span><input type="number" id="edGoal" min="0" max="10000" inputmode="numeric" placeholder="без цели"></label>
+    <div class="field"><span>Цвет</span><div class="swatches" id="edColor"></div></div>
+    <label class="switch"><input type="checkbox" id="edHidden"><span>Скрыть с главного экрана (записи сохранятся)</span></label>
+    <div class="edbtns">
+      <button class="primary" id="edSave">Сохранить</button>
+      <button id="edCancel">Отмена</button>
+    </div>
+    <button class="danger" id="edDelete">Удалить практику</button>
   </section>
 
   <section class="card">
@@ -87,10 +87,10 @@
       <button id="exp">Сохранить копию</button>
       <button id="imp">Восстановить</button>
     </div>
-    <div class="hint2">Записи хранятся в самом телефоне и не пропадают при обновлении приложения. Копия в файл нужна на случай, если приложение удалят или сменится телефон.</div>
+    <div class="hint2">Записи хранятся в самом телефоне и не пропадают при обновлении приложения. Копия в файл нужна, если приложение удалят или сменится телефон. При восстановлении записи из файла добавляются к уже имеющимся.</div>
   </section>
 
-  <div class="status" id="status"></div>
+  <div class="status" id="status2"></div>
 </div>
 
 <div class="focus" id="focus" hidden>
